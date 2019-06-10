@@ -1,0 +1,7 @@
+/home/labredes/Escritorio/Practica3/serieleibniz_procesos.c: In function ‘main’:
+/home/labredes/Escritorio/Practica3/serieleibniz_procesos.c:68:14: error: invalid type argument of unary ‘*’ (have ‘double’)
+   double x = *leibniznumber
+              ^~~~~~~~~~~~~~
+/home/labredes/Escritorio/Practica3/serieleibniz_procesos.c:69:3: error: expected ‘,’ or ‘;’ before ‘printf’
+   printf("%f\n", x );
+   ^~~~~~
