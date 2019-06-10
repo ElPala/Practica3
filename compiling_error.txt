@@ -1,7 +1,13 @@
-/home/labredes/Escritorio/Practica3/serieleibniz_procesos.c: In function ‘main’:
-/home/labredes/Escritorio/Practica3/serieleibniz_procesos.c:68:14: error: invalid type argument of unary ‘*’ (have ‘double’)
-   double x = *leibniznumber
-              ^~~~~~~~~~~~~~
-/home/labredes/Escritorio/Practica3/serieleibniz_procesos.c:69:3: error: expected ‘,’ or ‘;’ before ‘printf’
-   printf("%f\n", x );
-   ^~~~~~
+/home/luis/Desktop/Practica3/serieleibniz_hilosprocesos.c: In function ‘main’:
+/home/luis/Desktop/Practica3/serieleibniz_hilosprocesos.c:24:12: error: ‘NTHREADS’ undeclared (first use in this function); did you mean ‘_SC_THREADS’?
+ int parArr[NTHREADS];
+            ^~~~~~~~
+            _SC_THREADS
+/home/luis/Desktop/Practica3/serieleibniz_hilosprocesos.c:24:12: note: each undeclared identifier is reported only once for each function it appears in
+/home/luis/Desktop/Practica3/serieleibniz_hilosprocesos.c:32:13: warning: implicit declaration of function ‘clone’; did you mean ‘close’? [-Wimplicit-function-declaration]
+   int pid = clone(fn, pchild_stack + (1024 * 1024),SIGCHLD, );
+             ^~~~~
+             close
+/home/luis/Desktop/Practica3/serieleibniz_hilosprocesos.c:32:61: error: expected expression before ‘)’ token
+   int pid = clone(fn, pchild_stack + (1024 * 1024),SIGCHLD, );
+                                                             ^
