@@ -5,7 +5,7 @@ serieleibniz: serieleibniz.c
 		gcc -o serieleibniz serieleibniz.c
 
 serieleibniz_hilos: serieleibniz_hilos.c
-		gcc -o serieleibniz_hilos serieleibniz_hilos.c
+		gcc -o serieleibniz_hilos serieleibniz_hilos.c -pthread
 
 serieleibniz_hilosprocesos: serieleibniz_hilosprocesos.c
 		gcc -o serieleibniz_hilosprocesos serieleibniz_hilosprocesos.c
