@@ -1,11 +1,12 @@
+#include <sched.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <sys/time.h>
-
+#include <sys/time.h>#include <sys/wait.h>
 #define CYCLES 2000000000
 
 int main(int argc, char const *argv[]) {
+  void fn();
   int i;
   double leibniznumber=0;
   double sign = -1;
@@ -16,10 +17,8 @@ int main(int argc, char const *argv[]) {
   gettimeofday(&ts,NULL);
   start = ts.tv_sec;
 
-  for (i = 0; i < CYCLES; i++) {
-    sign *= -1;
-    leibniznumber+= sign/((2*i) + 1);
-  }
+  void *pchild_stack = malloc(1024 * 1024);
+  int pid = clone(fn, pchild_stack + (1024 * 1024),SIGCHLD, &argv);
 
 
   printf("%f\n",leibniznumber );
@@ -28,4 +27,21 @@ int main(int argc, char const *argv[]) {
   time = finish-start;
   printf("Tiempo total: %d seg\n",(int) time );
   return 0;
+
+  free(pchild_stack);
+
+
+}
+
+  void fn(void *args){
+
+    int i=*((int *) args);
+    double leibniznumber=*((double *) args);
+    double sign=*((double *) args);
+
+    for (i = 0; i < CYCLES; i++) {
+      sign *= -1;
+      leibniznumber+= sign/((2*i) + 1);
+    }
+
 }
