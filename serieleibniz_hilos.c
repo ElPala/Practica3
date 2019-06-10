@@ -5,7 +5,7 @@
 #include <pthread.h>
 
 #define CYCLES 2000000000
-#define NTHREADS 2
+#define NTHREADS 4
 double leibniznumber=0;
 
 void *tfunc(void *args)
