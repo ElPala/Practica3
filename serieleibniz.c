@@ -13,6 +13,7 @@ int main(int argc, char const *argv[]) {
   long long finish;
   long long time;
   struct timeval ts;
+  
   gettimeofday(&ts,NULL);
   start = ts.tv_sec;
 
