@@ -7,7 +7,7 @@
 #define CYCLES 2000000000
 
 int main(int argc, char const *argv[]) {
-
+  int clone(void *, void *, int ,int,double,double);
   int i;
   double leibniznumber=0;
   double sign = -1;
@@ -15,22 +15,14 @@ int main(int argc, char const *argv[]) {
   long long finish;
   long long time;
   struct timeval ts;
-  void fn(void *args);
-
+  void fn(int, double, double);
 
   gettimeofday(&ts,NULL);
   start = ts.tv_sec;
 
-int parArr[NTHREADS];
-for(i=0;i<NTHREADS;i++)
-{
-  parArr[i]=i;
-}
-
-
   void *pchild_stack = malloc(1024 * 1024);
-  int pid = clone(fn, pchild_stack + (1024 * 1024),SIGCHLD, );
-
+  int pid = clone(fn, pchild_stack + (1024 * 1024),SIGCHLD,i, leibniznumber,sign );
+  //fn(i, leibniznumber, sign);
 
   printf("%f\n",leibniznumber );
   gettimeofday(&ts,NULL);
@@ -39,20 +31,14 @@ for(i=0;i<NTHREADS;i++)
   printf("Tiempo total: %d seg\n",(int) time );
   return 0;
 
-  free(pchild_stack);
+  //free(pchild_stack);
 
 
 }
-
-  void fn(void *args){
-
-    int i=*((int *) args);
-    double leibniznumber=*((double *) args);
-    double sign=*((double *) args);
+  void fn(int i, double leibniznumber, double sign){
 
     for (i = 0; i < CYCLES; i++) {
       sign *= -1;
       leibniznumber+= sign/((2*i) + 1);
     }
-
 }
